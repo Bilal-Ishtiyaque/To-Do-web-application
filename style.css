@@ -1,0 +1,268 @@
+
+/* Variables */
+
+:root {
+
+
+    --primary: linear-gradient(90deg, #ee6352, purple, #ee6352);
+    --business: linear-gradient(90deg, #52a5ee, rgb(0, 43, 128), #52d9ee);
+    --personal: var(--primary);
+    --light: #EEE;
+    --grey: #888;
+    --dark: #313154;
+    --danger: #ff5b57;
+
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    --business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
+    --personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+
+
+}
+
+/* Resets */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'montserrat', sans-serif;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+/* styling start  */
+
+body {
+    color: var(--dark);
+    min-height: 100vh;
+    background-color: rgb(108, 102, 102);
+}
+
+main{
+    padding: 20px 0;
+    background: var(--light);
+    min-height: 100vh;
+}
+
+
+section {
+    margin: 2rem 0 2rem;
+    padding: 0 1.5rem 0;
+}
+
+.heading {
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+.greeting {
+    display: flex;
+    gap: 8px;
+}
+
+
+/* input which holds name .greeting input */
+
+.greeting input {
+    min-width: 165px;
+    max-width: 100%;
+}
+
+
+.greeting :where(.title, input) {
+    color: var(--dark);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 8vw - 1.1rem , 1.5rem);
+}
+
+
+.create-todo input[type="text"] {
+    display: block;
+    width: 100%;
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+    color: var(--dark);
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+
+.sub-heading {
+    color: grey;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.5rem;
+}
+
+/* options : BUSINESS OR PERSONAL */
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.options label {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+.options input[type = "submit"]{
+    width: 100%;
+    grid-column: 1/3;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    color:var(--light);
+    border-radius: 7px;
+    background-image: var(--personal);
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.options input[type = "submit"]:hover{
+    opacity: 0.85;
+}
+
+.options input[type = "radio"]{
+    display: none;
+}
+
+.list-section input[type ="checkbox"]{
+    display: none;
+}
+
+/* radio bubble */
+
+.bubble{
+    border: 2px solid #3a82ee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius:50%;
+    box-shadow: var(--business-glow);
+}
+
+.bubble.personal{
+    border-color: #ba13d4;
+    box-shadow: var(--personal-glow);
+}
+
+.bubble::after{
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    background-image: var(--business);
+    box-shadow: var(--business-glow);
+    border-radius:50%;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.bubble.personal::after{
+
+    background-image: var(--personal);
+    box-shadow: var(--personal-glow);
+}
+
+input:checked ~ .bubble::after{
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+}
+
+
+.p{
+    display: none;
+}
+
+/* todo list */
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.list .todo-item{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+.todo-content{
+    flex-grow: 1;
+}
+
+
+.textarea{
+    width: 100%;
+    height: 30px;
+    padding: 9px 9px 0 9px;
+    outline: none;
+    resize: none;
+    font-size: 1rem;
+    color: var(--dark);
+    border: none;
+}
+
+.textarea::-webkit-scrollbar{
+    width: 0;
+}
+
+
+/* edit and delete box  */
+
+.actions{
+    display: none;
+    gap: 17px;
+}
+
+.actions button{
+   background-color: white;
+}
+
+.todo-item:hover .actions{
+    display: flex;
+}
+
+.actions button:is(:hover, :focus){
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+/* textarea line through when .done */
+
+.todo-item.done .textarea{
+    text-decoration: line-through;
+    color: var(--grey);
+}
+
+@media (min-width : 600px){
+    main{
+        max-width: 600px; margin-inline: auto;
+    }
+}
