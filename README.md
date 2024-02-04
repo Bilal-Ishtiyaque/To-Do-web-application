@@ -33,3 +33,7 @@ Things that one will learn while making this project:
 -creating auto growing text field
 
 -Local Storage - getItem(), setItem(), JSON.stringify(), JSON.parse()
+
+# Preview : 
+
+![todo](https://github.com/Bilal-Ishtiyaque/To-Do-web-application/assets/139645574/8f9a6e82-cca0-4ed5-b740-a0e0e2993076)
